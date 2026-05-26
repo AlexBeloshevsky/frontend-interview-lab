@@ -1,2 +1,1 @@
 # Layoff Explanation
-

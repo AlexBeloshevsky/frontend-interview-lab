@@ -76,15 +76,15 @@ frontend-interview-lab/
 
 ## Sections at a glance
 
-| Folder | Purpose |
-|--------|---------|
-| `weekly-progress/` | Track what was studied and built each week |
-| `bfe-solutions/` | Implement classic JS utilities and patterns from scratch |
-| `react-components/` | Build reusable UI patterns common in live coding rounds |
-| `system-design/` | Document component- and feature-level design decisions |
+| Folder                   | Purpose                                                       |
+| ------------------------ | ------------------------------------------------------------- |
+| `weekly-progress/`       | Track what was studied and built each week                    |
+| `bfe-solutions/`         | Implement classic JS utilities and patterns from scratch      |
+| `react-components/`      | Build reusable UI patterns common in live coding rounds       |
+| `system-design/`         | Document component- and feature-level design decisions        |
 | `architecture-opinions/` | Capture reasoning on state, data fetching, and React patterns |
-| `typescript-exercises/` | Practice strict typing, generics, and discriminated unions |
-| `ai-projects/` | Explore AI product ideas relevant to modern frontend roles |
-| `browser-notes/` | Review how the browser executes and renders your code |
-| `behavioral/` | Prepare STAR stories and common narrative questions |
-| `mistake-log.md` | Record mistakes to avoid repeating them in interviews |
+| `typescript-exercises/`  | Practice strict typing, generics, and discriminated unions    |
+| `ai-projects/`           | Explore AI product ideas relevant to modern frontend roles    |
+| `browser-notes/`         | Review how the browser executes and renders your code         |
+| `behavioral/`            | Prepare STAR stories and common narrative questions           |
+| `mistake-log.md`         | Record mistakes to avoid repeating them in interviews         |
