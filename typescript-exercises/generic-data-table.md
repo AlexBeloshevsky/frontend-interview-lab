@@ -1,2 +1,1 @@
 # Generic Data Table
-
