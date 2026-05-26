@@ -1,4 +1,4 @@
-export function debounced<Args extends unknown[]>(
+export function debounce<Args extends unknown[]>(
   fn: (...args: Args) => void,
   delay: number,
 ) {

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { debounced } from "./debounce";
+import { debounce } from "./debounce";
 
 describe("debounced", () => {
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe("debounced", () => {
 
   it("does not call the original function immediately", () => {
     const fn = vi.fn();
-    const run = debounced(fn, 100);
+    const run = debounce(fn, 100);
 
     run();
 
@@ -21,7 +21,7 @@ describe("debounced", () => {
 
   it("calls the original function once after the delay", () => {
     const fn = vi.fn();
-    const run = debounced(fn, 100);
+    const run = debounce(fn, 100);
 
     run();
     vi.advanceTimersByTime(100);
@@ -31,7 +31,7 @@ describe("debounced", () => {
 
   it("forwards the latest arguments", () => {
     const fn = vi.fn();
-    const run = debounced(fn, 100);
+    const run = debounce(fn, 100);
 
     run("a");
     run("b", 2);
@@ -44,7 +44,7 @@ describe("debounced", () => {
 
   it("coalesces rapid calls into a single invocation", () => {
     const fn = vi.fn();
-    const run = debounced(fn, 100);
+    const run = debounce(fn, 100);
 
     run();
     run();
@@ -56,7 +56,7 @@ describe("debounced", () => {
 
   it("resets the delay when called again before it elapses", () => {
     const fn = vi.fn();
-    const run = debounced(fn, 100);
+    const run = debounce(fn, 100);
 
     run("first");
     vi.advanceTimersByTime(50);
@@ -72,7 +72,7 @@ describe("debounced", () => {
 
   it("schedules a separate invocation after each quiet period", () => {
     const fn = vi.fn();
-    const run = debounced(fn, 100);
+    const run = debounce(fn, 100);
 
     run(1);
     vi.advanceTimersByTime(100);
