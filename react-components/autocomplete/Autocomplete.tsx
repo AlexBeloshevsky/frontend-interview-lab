@@ -17,17 +17,17 @@ export const Autocomplete = ({
   placeholder,
 }: AutocompleteProps) => {
   const [inputValue, setInputValue] = useState("");
-
+  const [isOpen, setIsOpen] = useState(false);
   const handleSelect = (option: AutocompleteOption) => {
     setInputValue(option.label);
     onSelect(option);
+    setIsOpen(false);
   };
 
   const filteredOptions = options.filter((option) =>
     option.label.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
-  const shouldShowDropDown = inputValue.length > 0;
   const hasResults = filteredOptions.length > 0;
 
   return (
@@ -38,9 +38,10 @@ export const Autocomplete = ({
         value={inputValue}
         onChange={(event) => {
           setInputValue(event.target.value);
+          setIsOpen(true);
         }}
       />
-      {shouldShowDropDown ? (
+      {isOpen ? (
         hasResults ? (
           <ul>
             {filteredOptions.map((option) => (
