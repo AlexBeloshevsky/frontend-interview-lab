@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 
-type AutocompleteOption = {
-  id: string;
-  label: string;
-};
-
-type AutocompleteProps = {
-  options: AutocompleteOption[];
-  onSelect: (option: AutocompleteOption) => void;
+type AutocompleteProps<T> = {
+  options: T[];
+  getId: (option: T) => string;
+  getLabel: (option: T) => string;
+  onSelect: (option: T) => void;
   placeholder?: string;
 };
 
-export const Autocomplete = ({
+export const Autocomplete = <T,>({
   options,
+  getId,
+  getLabel,
   onSelect,
   placeholder,
-}: AutocompleteProps) => {
+}: AutocompleteProps<T>) => {
   const [inputValue, setInputValue] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const handleSelect = (option: AutocompleteOption) => {
-    setInputValue(option.label);
+  const handleSelect = (option: T) => {
+    setInputValue(getLabel(option));
     onSelect(option);
     setIsOpen(false);
   };
 
   const filteredOptions = options.filter((option) =>
-    option.label.toLowerCase().includes(inputValue.toLowerCase()),
+    getLabel(option).toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   const hasResults = filteredOptions.length > 0;
@@ -45,9 +44,9 @@ export const Autocomplete = ({
         hasResults ? (
           <ul>
             {filteredOptions.map((option) => (
-              <li key={option.id}>
+              <li key={getId(option)}>
                 <button type="button" onClick={() => handleSelect(option)}>
-                  {option.label}
+                  {getLabel(option)}
                 </button>
               </li>
             ))}

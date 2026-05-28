@@ -15,6 +15,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,
@@ -27,6 +29,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,
@@ -42,6 +46,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,
@@ -59,6 +65,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,
@@ -75,6 +83,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,
@@ -92,6 +102,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={onSelect}
         placeholder="Search topics"
       />,
@@ -110,6 +122,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,
@@ -129,6 +143,8 @@ describe("Autocomplete", () => {
     render(
       <Autocomplete
         options={options}
+        getId={(option) => option.id}
+        getLabel={(option) => option.label}
         onSelect={vi.fn()}
         placeholder="Search topics"
       />,

@@ -52,3 +52,7 @@ support error state
 make component generic
 support debounced remote search
 add styling
+
+## future improvements handled:
+
+- component is now generic
