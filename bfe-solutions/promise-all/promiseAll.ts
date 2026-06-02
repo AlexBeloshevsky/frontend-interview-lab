@@ -1,7 +1,7 @@
 export function promiseAll<T>(items: Array<T | Promise<T>>): Promise<T[]> {
   return new Promise((resolve, reject) => {
     const results: T[] = [];
-    let completedCount = 0;
+    let resolvedCount = 0;
     if (items.length === 0) {
       resolve([]);
       return;
@@ -10,13 +10,14 @@ export function promiseAll<T>(items: Array<T | Promise<T>>): Promise<T[]> {
       Promise.resolve(element)
         .then((el) => {
           results[index] = el;
-          completedCount++;
-          if (completedCount === items.length) {
+          resolvedCount++;
+          if (items.length === resolvedCount) {
             resolve(results);
-            return;
           }
         })
-        .catch((error) => reject(error));
+        .catch((err) => {
+          reject(err);
+        });
     });
   });
 }
