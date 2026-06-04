@@ -90,3 +90,7 @@ The main tradeoff was API call order. We could call all eligibility APIs earlier
 #### How did you know whether it was successful?
 
 We monitored the experiment through IXP and Splunk. Technically, the feature met the performance expectation: the cell rendered in under two seconds after initial load. Product-wise, RTP adoption increased by about 20% relative to itself, but the lift came at the expense of next-day payment revenue, so the experiment was not kept.
+
+### Short lesson
+
+The main lesson from this project was that ownership is not just shipping the code. It also means raising risks early, aligning stakeholders, making tradeoffs explicit, monitoring the result, and accepting the experiment data even when the feature does not become permanent.
