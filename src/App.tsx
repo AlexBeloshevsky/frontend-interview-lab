@@ -1,14 +1,23 @@
-import UsersList from "./exercises/users-list/UsersList";
-import { useIsFirstRender } from "./exercises/use-is-first-render/useIsFirstRender";
+import Tabs, { Tab } from "./exercises/tabs/Tabs";
+
+const tabs: Tab[] = [
+  {
+    id: "overview",
+    label: "Overview",
+    content: "This is the overview panel",
+  },
+  {
+    id: "alerts",
+    label: "Alerts",
+    content: "This is the alerts panel",
+  },
+  {
+    id: "settings",
+    label: "Settings",
+    content: "This is the settings panel",
+  },
+];
+
 export default function App() {
-  const isFirstRender = useIsFirstRender();
-  console.log({ isFirstRender });
-
-  return (
-    <main style={{ padding: 24 }}>
-      <h1>Frontend Interview Lab</h1>
-
-      <UsersList />
-    </main>
-  );
+  return <Tabs tabs={tabs} />;
 }
