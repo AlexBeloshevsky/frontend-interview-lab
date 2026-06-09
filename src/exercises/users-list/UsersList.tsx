@@ -8,50 +8,43 @@ type User = {
   image: string;
 };
 
+type Status = "loading" | "success" | "failure";
+
 export default function UsersList() {
+  const [status, setStatus] = useState<Status>("loading");
   const [users, setUsers] = useState<User[]>([]);
   const [search, setSearch] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([]); // can be derived
+  const [error, setError] = useState<string | null>(null);
+  const normalizedSearch = search.toLowerCase();
+  const filteredUsers = users.filter((user) =>
+    user.firstName.toLowerCase().includes(normalizedSearch),
+  );
 
   useEffect(() => {
-    setLoading(true); // can be initialized as true
-
     fetch("https://dummyjson.com/users")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("something went wrong!");
+        }
+        return res.json();
+      })
       .then((data) => {
-        // no check for response errors
         setUsers(data.users);
-        setFilteredUsers(data.users);
-        setLoading(false);
+        setStatus("success");
       })
       .catch((err) => {
-        // no setLoading(false);
-        setError(err.message);
+        setStatus("failure");
+        setError(err instanceof Error ? err.message : "unknown error");
       });
   }, []);
-  // whole api call should be in a custom hook
 
-  function handleSearch(value: string) {
-    setSearch(value);
-
-    const filtered = users.filter((user) =>
-      user.firstName.toLowerCase().includes(value.toLowerCase()),
-    ); // filtering only works for first names, can add family names as well
-
-    setFilteredUsers(filtered);
-  }
-
-  if (loading) {
+  if (status === "loading") {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if (status === "failure") {
     return <p>{error}</p>;
   }
-
-  // no empty state
 
   return (
     <main>
@@ -59,9 +52,11 @@ export default function UsersList() {
 
       <input
         value={search}
-        onChange={(event) => handleSearch(event.target.value)}
+        onChange={(event) => setSearch(event.target.value)}
         placeholder="Search users"
       />
+
+      {filteredUsers.length === 0 && <p>empty state</p>}
 
       {filteredUsers.map((user) => (
         <div key={user.id}>
