@@ -21,6 +21,14 @@ frontend-interview-lab/
 │   ├── deep-clone/
 │   └── event-emitter/
 │
+├── practice/                   # Timed interview drills (improve-code, AI usage, rubric)
+│   ├── refactor-soc-alerts/        # Core "improve existing code" drill (SOC alerts)
+│   ├── refactor-soc-alerts-perf/   # Perf variant: 10k rows, virtualization, streaming
+│   ├── refactor-data-layer/        # Decouple fetch; REST -> GraphQL seam
+│   ├── refactor-i18n/              # Secondary: internationalize a component
+│   ├── ai-usage-playbook.md        # 3-phase AI-pairing protocol + talk-track
+│   └── refactor-rubric.md          # Self-scoring rubric
+│
 ├── react-components/           # Interview-style React component builds
 │   ├── autocomplete/
 │   ├── autocomplete-swr/
@@ -79,6 +87,7 @@ frontend-interview-lab/
 | Folder                   | Purpose                                                       |
 | ------------------------ | ------------------------------------------------------------- |
 | `weekly-progress/`       | Track what was studied and built each week                    |
+| `practice/`              | Timed improve-code drills, AI-usage playbook, scoring rubric  |
 | `bfe-solutions/`         | Implement classic JS utilities and patterns from scratch      |
 | `react-components/`      | Build reusable UI patterns common in live coding rounds       |
 | `system-design/`         | Document component- and feature-level design decisions        |

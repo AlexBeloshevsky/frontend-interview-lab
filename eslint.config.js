@@ -24,5 +24,13 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    // Practice stubs are intentionally incomplete (unused params before you
+    // implement them), so don't flag unused vars in practice/ folders.
+    files: ["**/practice/**/*.{ts,tsx}"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
   eslintConfigPrettier,
 );
