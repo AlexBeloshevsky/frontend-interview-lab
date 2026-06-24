@@ -10,6 +10,23 @@
  */
 
 export function promiseAll<T>(items: Array<T | Promise<T>>): Promise<T[]> {
-  // TODO: implement
-  throw new Error("Not implemented");
+  return new Promise((resolve, reject) => {
+    const results: T[] = [];
+    let resolvedCount = 0;
+    if (items.length === 0) {
+      resolve([]);
+      return;
+    }
+    items.forEach((item, index) => {
+      Promise.resolve(item)
+        .then((el) => {
+          results[index] = el;
+          resolvedCount++;
+          if (resolvedCount === items.length) {
+            resolve(results);
+          }
+        })
+        .catch((err) => reject(err));
+    });
+  });
 }

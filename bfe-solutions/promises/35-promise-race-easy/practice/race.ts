@@ -9,6 +9,9 @@
  */
 
 export function race<T>(promises: Array<T | Promise<T>>): Promise<T> {
-  // TODO: implement
-  throw new Error("Not implemented");
+  return new Promise((resolve, reject) => {
+    for (const item of promises) {
+      Promise.resolve(item).then(resolve, reject);
+    }
+  });
 }

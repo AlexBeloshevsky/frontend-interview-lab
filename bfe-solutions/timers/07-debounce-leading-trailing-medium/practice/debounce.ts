@@ -25,6 +25,25 @@ export function debounce<A extends unknown[]>(
   wait: number,
   { leading = false, trailing = true }: DebounceOptions = {},
 ): (...args: A) => void {
-  // TODO: implement
-  throw new Error("Not implemented");
+  let timer;
+  let pendingArgs;
+  return function debounced(...args) {
+    if (timer) {
+      pendingArgs = args;
+    } else if (leading) {
+      fn(...args);
+    } else {
+      pendingArgs = args;
+    }
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      if (trailing && pendingArgs) {
+        fn(...pendingArgs);
+      }
+      pendingArgs = null;
+      timer = null;
+    }, wait);
+  };
 }
