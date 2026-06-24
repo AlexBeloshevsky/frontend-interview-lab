@@ -25,6 +25,26 @@ export function throttle<A extends unknown[]>(
   wait: number,
   { leading = true, trailing = true }: ThrottleOptions = {},
 ): (...args: A) => void {
-  // TODO: implement
-  throw new Error("Not implemented");
+  let timer;
+  let trailingArgs;
+  function startCooldown() {
+    timer = setTimeout(() => {
+      if (trailingArgs) {
+        if (trailing) fn(...trailingArgs);
+        trailingArgs = null;
+        startCooldown();
+      } else {
+        timer = null;
+      }
+    }, wait);
+  }
+
+  return function (...args) {
+    if (timer) {
+      trailingArgs = args;
+      return;
+    }
+    if (leading) fn(...args);
+    startCooldown();
+  };
 }
