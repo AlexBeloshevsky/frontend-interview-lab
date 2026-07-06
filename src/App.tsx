@@ -8,13 +8,16 @@ import {
   IncidentDetail,
 } from "../practice/refactor-data-layer/LeakyComponents";
 import { HardcodedPanel } from "../practice/refactor-i18n/HardcodedPanel";
+import { RecommendationsWidget } from "../practice/senior-fe-infra-interview/coding/04-recommendations-widget/RecommendationsWidget";
+import React from "react";
 
 type DrillId =
   | "soc-alerts"
   | "soc-perf"
   | "data-layer"
   | "i18n"
-  | "table-view";
+  | "table-view"
+  | "recommendations-widget";
 
 const DRILLS: { id: DrillId; label: string; note: string }[] = [
   {
@@ -32,8 +35,21 @@ const DRILLS: { id: DrillId; label: string; note: string }[] = [
     label: "Data layer seam",
     note: "fetch() leaks into components; hits a fake URL so expect loading/error.",
   },
-  { id: "i18n", label: "i18n panel", note: "Hardcoded strings/dates/plurals to extract." },
-  { id: "table-view", label: "Original TableView", note: "Your existing exercise." },
+  {
+    id: "i18n",
+    label: "i18n panel",
+    note: "Hardcoded strings/dates/plurals to extract.",
+  },
+  {
+    id: "table-view",
+    label: "Original TableView",
+    note: "Your existing exercise.",
+  },
+  {
+    id: "recommendations-widget",
+    label: "Recommendations Widget",
+    note: "Recommendations widget exercise.",
+  },
 ];
 
 export default function App() {
@@ -72,7 +88,9 @@ export default function App() {
         ))}
       </nav>
 
-      <p style={{ padding: "8px 12px", margin: 0, color: "#666", fontSize: 13 }}>
+      <p
+        style={{ padding: "8px 12px", margin: 0, color: "#666", fontSize: 13 }}
+      >
         {active.note}
       </p>
 
@@ -95,6 +113,7 @@ export default function App() {
           />
         )}
         {drill === "table-view" && <TableView />}
+        {drill === "recommendations-widget" && <RecommendationsWidget />}
       </div>
     </div>
   );
